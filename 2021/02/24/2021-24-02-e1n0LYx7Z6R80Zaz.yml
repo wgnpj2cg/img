@@ -1,0 +1,19 @@
+version: '2'
+services:
+  chrome:
+    image: selenium/node-chrome-debug:3.12.0-boron
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+      NODE_MAX_INSTANCES : "5"
+      NODE_MAX_SESSION : "5"
+    ports:
+      - "5900:5900"
+
+  hub:
+    image: selenium/hub:3.12.0-boron
+    ports:
+      - "4444:4444"
