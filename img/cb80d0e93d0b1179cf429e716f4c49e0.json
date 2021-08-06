@@ -1,0 +1,52 @@
+{
+  "inbounds": [
+    {
+      "port": 1080,
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "1st.herokuapp.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "40c98649-847b-412c-a229-5e68ca9985eb",
+                "security": "auto",
+                "alterId": 64
+              }
+            ]
+          },
+          {
+            "address": "2nd.herokuapp.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "40c98649-847b-412c-a229-5e68ca9985eb",
+                "security": "auto",
+                "alterId": 64
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls"
+      }
+    }
+  ]
+}
